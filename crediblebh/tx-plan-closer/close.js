@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        close.js
+// @name        tx-plan-closer/close.js
 // @namespace   Violentmonkey Scripts
 // @match       https://www.cbh3.crediblebh.com/client/client_tx_add.aspx?client_id=*&mode=edit&tx_id=*
 // @grant       none
