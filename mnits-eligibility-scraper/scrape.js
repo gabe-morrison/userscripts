@@ -86,7 +86,7 @@ const submitForm = () => {
 
 const updateSessionStorage = () => {
   let data = JSON.parse(sessionStorage.getItem('csvData'));
-  data[rowIndex] = data.rowIndex.splice(3, Infinity, majorProgram, pmap, comments);
+  data[rowIndex].splice(3, data[rowIndex].length, majorProgram, pmap, comments);
   sessionStorage.setItem('csvData', JSON.stringify(data));
   sessionStorage.setItem('rowIndex', Number(++rowIndex));
 }
