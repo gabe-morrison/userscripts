@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        tx-plan-closer/close.js
+// @name        crediblebh/tx-plan-closer/close.js
 // @namespace   Violentmonkey Scripts
 // @match       https://www.cbh3.crediblebh.com/client/client_tx_add.aspx?client_id=*&mode=edit&tx_id=*
 // @grant       none
@@ -26,6 +26,7 @@ const checkRangeValidity = () => {
     if (difference > 192) { promptOutOfRange(newDate, oldDate, difference) };
 }
 
+const getRandomTimeout = () => Math.floor((Math.random() * (.9999 - .5000) + .5000) * 10000);
 
 const promptOutOfRange = () => {
     const input = Window.prompt('Effective range greater than 6 months detected. Would you like to proceed? (y/n)');
@@ -43,7 +44,7 @@ const endDateField = ctx.querySelector('#ctl00_cph_txtEndDate');
 const saveBtn = ctx.querySelector('#ctl00_cph_btnSave');
 
 const startDate = ctx.querySelector('#ctl00_cph_txtStartDate').value;
-const endDate = localStorage.getItem('endDate');
+const endDate = sessionStorage.getItem('endDate');
 
 console.log(`End Date: ${endDate}`);
 
@@ -51,4 +52,6 @@ checkRangeValidity();
 
 endDateField.value = endDate;
 
-saveBtn.click();
+setTimeout(() => {
+  saveBtn.click();
+}, getRandomTimeout());
