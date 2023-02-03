@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        tx-plan-closer/parse.js
+// @name        crediblebh/tx-plan-closer/parse.js
 // @namespace   Violentmonkey Scripts
 // @match       https://www.cbh3.crediblebh.com/client/client_tx.aspx?client_id=*
 // @grant       none
@@ -51,16 +51,21 @@ const promptSixMonthError = () => {
     input = input.toLowerCase();
     if (input === 'y' || input === 'yes') { return }
     else if (input === 'n' || input === 'no') {
-      alert('Treatment plan dates out of range, stopping execution...';
-      throw 'Treatment plan dates out of range, stopping execution...'; 
+      alert('Treatment plan dates out of range, stopping execution...');
+      throw 'Treatment plan dates out of range, stopping execution...';
     }
     else { promptSixMonthError() };
 }
 
+const getRandomTimeout = () => Math.floor((Math.random() * (.9999 - .5000) + .5000) * 10000);
+
+
 const editOldest = () => {
-  localStorage.setItem('endDate', newDate);
+  sessionStorage.setItem('endDate', newDate);
   const editBtn = ctx.querySelector(`[id=${oldestDate.id}] ~ [id$=btnEdit]`);
-  editBtn.click();
+    setTimeout(() => {
+      editBtn.click();
+    }, getRandomTimeout());
 }
 
 
