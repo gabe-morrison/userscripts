@@ -1,7 +1,8 @@
 // ==UserScript==
-// @name        crediblebh/attach.js
+// @name        crediblebh/attachment-helper.js
 // @namespace   Violentmonkey Scripts
 // @match       https://www.cbh3.crediblebh.com/common/add_attachment.asp*
+// @exclude     /\?id/
 // @grant       none
 // @version     1.0
 // @author      -
@@ -20,7 +21,7 @@ const predictFolder = () => {
   const financialRegex = new RegExp(['Benefit', 'SSI', 'Financial', 'SNAP', 'Energy', 'Asst', 'Payee', 'Deposit', 'Account', 'MSA', 'GA ', 'EAP ', 'GRH'].join('|', 'i'));
   const hospitalRegex = new RegExp(['Disch', 'Regions', 'United', 'Abbott', 'Mercy', 'Admis', 'ANW'].join('|', 'i'));
   const housingRegex = new RegExp(['Lease', 'Housing', 'DSP', 'Dale', 'PHA', 'Inspection', 'Rent', 'Subsidy', 'Apartment', 'Unit', 'Section 8', 'Sect 8', 'MHR'].join('|', 'i'));;
-  const labsRegex = new RegExp(['CBC', 'Lipid', 'Panel', 'Lab', 'A1C'].join('|', 'i'));
+  const labsRegex = new RegExp(['CBC', 'Lipid', 'Panel', 'Lab', 'A1C', 'Cloz'].join('|', 'i'));
   const legalRegex = new RegExp(['Order', 'Commitment', 'PD', 'Petition', 'PPS', 'SSID', 'Recommit', 'Extension', 'Rule 20', "Waiver", 'Revocation', 'Court', 'NTP',
                                  'Affidavit', 'Examiner', '60-90', '6090', 'Warrant', 'Appr',].join('|', 'i'));
   const medicalRegex = new RegExp(['Visit', 'AVS', 'Rx', 'Endoc', 'HP', 'Allina', 'Physical', 'Nystrom', 'Scan', ' DA.', 'ology', 'UFM'].join('|', 'i'));
